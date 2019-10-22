@@ -1,2 +1,28 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1 class="text-center mb-5">Categories</h1>
+<div class="brands-container">
+  <%= link_to ('<i class="fa fa-plus-square fa-3x pull-right add-category-button"></i> ').html_safe, new_category_path %>
+  <div class="table-responsive text-center categories-table ml-auto mr-auto">
+    <table class="table table-striped">
+      <thead>
+        <tr class="thead-dark">
+          <th scope="col">S.No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Active</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% serial_number = 1 %>
+        <% @categories.each do |category| %>
+          <tr>
+            <th scope="row"><%= serial_number %></th>
+            <td><%= category.name %></td>
+            <td><%= category.active %></</td>
+            <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_category_path(category) %></td>
+          </tr>
+          <% serial_number += 1%>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

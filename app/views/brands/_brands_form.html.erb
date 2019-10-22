@@ -1,4 +1,4 @@
-<div class = "brands-form-container text-center mr-auto ml-auto">
+<div class = "simple-form-container text-center mr-auto ml-auto">
   <%= form_for @brand, class: "form-group" do |f| %>
 
     <% if @brand.errors.any? %>
@@ -12,7 +12,7 @@
       <%= f.text_field :name, placeholder: "Enter Brand Name", required: true, class: "form-control" %>
     </p>
     <p>
-      <%= f.label :Active %><br>
+      <%= f.label :Active %>
       <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
     </p>
     <p>

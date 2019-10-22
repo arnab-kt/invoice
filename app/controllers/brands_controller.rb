@@ -1,10 +1,9 @@
 class BrandsController < ApplicationController
 
-  before_action :find_brand, only: [:show, :edit, :update, :destroy]
+  before_action :find_brand, only: [:show, :edit, :update]
 
   def index
     @brands = Brand.all
-    @serial_number = 1
   end
 
   def show
@@ -39,8 +38,6 @@ class BrandsController < ApplicationController
     end
   end
 
-  def destroy
-  end
 
   private
 

@@ -1,9 +1,10 @@
-<h1 class="text-center mb-5">Brands</h1><br>
-<%= link_to fa_icon "camera-retro", new_brand_path %><br>
+<h1 class="text-center mb-5">Brands</h1>
+<div class="brands-container">
+  <%= link_to ('<i class="fa fa-plus-square fa-3x pull-right add-brand-button"></i> ').html_safe, new_brand_path %>
   <div class="table-responsive text-center brands-table ml-auto mr-auto">
-    <table class="table">
+    <table class="table table-striped">
       <thead>
-        <tr>
+        <tr class="thead-dark">
           <th scope="col">S.No</th>
           <th scope="col">Name</th>
           <th scope="col">Active</th>
@@ -17,10 +18,11 @@
             <th scope="row"><%= serial_number %></th>
             <td><%= brand.name %></td>
             <td><%= brand.active %></</td>
-            <td><%= link_to "Edit", edit_brand_path(brand) %></td>
+            <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_brand_path(brand) %></td>
           </tr>
           <% serial_number += 1%>
         <% end %>
       </tbody>
     </table>
   </div>
+</div>
