@@ -1,12 +1,9 @@
 class UomsController < ApplicationController
 
-  before_action :find_uom, only: [:show, :edit, :update]
+  before_action :find_uom, only: [:edit, :update]
 
   def index
     @uoms = Uom.all
-  end
-
-  def show
   end
 
   def new

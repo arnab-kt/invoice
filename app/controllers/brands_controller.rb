@@ -1,12 +1,9 @@
 class BrandsController < ApplicationController
 
-  before_action :find_brand, only: [:show, :edit, :update]
+  before_action :find_brand, only: [:edit, :update]
 
   def index
     @brands = Brand.all
-  end
-
-  def show
   end
 
   def new

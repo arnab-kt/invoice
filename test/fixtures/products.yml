@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  active: false
+  brand: one
+  category: one
+  uom: one
+
+two:
+  name: MyString
+  active: false
+  brand: two
+  category: two
+  uom: two
