@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_065058) do
+ActiveRecord::Schema.define(version: 2019_10_22_103300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(version: 2019_10_22_065058) do
     t.index ["uom_id"], name: "index_products_on_uom_id"
   end
 
+  create_table "purchase_items", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "quantity", null: false
+    t.decimal "rate", precision: 5, scale: 2, null: false
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_purchase_items_on_product_id"
+    t.index ["purchase_id"], name: "index_purchase_items_on_purchase_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "uoms", force: :cascade do |t|
     t.string "name", null: false
     t.string "abbreviation", null: false
@@ -53,4 +70,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_065058) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "uoms"
+  add_foreign_key "purchase_items", "products"
+  add_foreign_key "purchase_items", "purchases"
 end
