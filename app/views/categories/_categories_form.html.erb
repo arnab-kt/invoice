@@ -1,0 +1,22 @@
+<div class = "simple-form-container text-center mr-auto ml-auto">
+  <%= form_for @category, class: "form-group" do |f| %>
+
+    <% if @category.errors.any? %>
+      <% @category.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %></div>
+      <%end%>
+    <%end%>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Enter Category Name", required: true, class: "form-control" %>
+    </p>
+    <p>
+      <%= f.label :Active %>
+      <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
+    </p>
+    <p>
+      <%=f.submit({ class: "btn btn-success btn-sm"})%>
+    </p>
+  <% end %>
+</div>
