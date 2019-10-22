@@ -17,10 +17,10 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      flash[:notice] = "Category created successfully"
+      flash[:success] = "Category created successfully"
       redirect_to categories_path
     else
-      flash.now[:alert] = "Error while creating Category"
+      flash.now[:danger] = "Error while creating Category"
       render "new"
     end
   end
@@ -30,10 +30,10 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      flash[:notice] = "Category edited successfully"
+      flash[:success] = "Category edited successfully"
       redirect_to categories_path
     else
-      flash.now[:alert] = "Error while editing Category"
+      flash.now[:danger] = "Error while editing Category"
       render "edit"
     end
   end

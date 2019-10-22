@@ -17,10 +17,10 @@ class BrandsController < ApplicationController
     @brand = Brand.new(brand_params)
 
     if @brand.save
-      flash[:notice] = "Brand created successfully"
+      flash[:success] = "Brand created successfully"
       redirect_to brands_path
     else
-      flash.now[:alert] = "Error while creating Brand"
+      flash.now[:danger] = "Error while creating Brand"
       render "new"
     end
   end
@@ -30,10 +30,10 @@ class BrandsController < ApplicationController
 
   def update
     if @brand.update(brand_params)
-      flash[:notice] = "Brand edited successfully"
+      flash[:success] = "Brand edited successfully"
       redirect_to brands_path
     else
-      flash.now[:alert] = "Error while editing Brand"
+      flash.now[:danger] = "Error while editing Brand"
       render "edit"
     end
   end

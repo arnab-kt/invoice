@@ -18,3 +18,8 @@
 .simple-form-container{
   width: 300px;
 }
+
+.alert-box{
+  width: 600px;
+  margin: auto;
+}

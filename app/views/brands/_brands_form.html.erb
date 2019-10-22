@@ -2,9 +2,11 @@
   <%= form_for @brand, class: "form-group" do |f| %>
 
     <% if @brand.errors.any? %>
+      <% count = 1%>
       <% @brand.errors.full_messages.each do |msg| %>
-        <div class="alert alert-danger"><%= msg %></div>
-      <%end%>
+        <p class="text-danger"><%= count%>. <%= msg %></p>
+        <% count +=1 %>
+      <% end %>
     <%end%>
 
     <p>
