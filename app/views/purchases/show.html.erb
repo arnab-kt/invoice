@@ -1,2 +1,45 @@
-<h1>Purchases#show</h1>
-<p>Find me in app/views/purchases/show.html.erb</p>
+<h1 class="text-center mb-5">Show Purchase</h1>
+<div class = "purchase-details" >
+  <p class="text-center">
+    <span>Purchase ID: <%= @purchase.id %></span><br>
+    <span>Date: <%= @purchase.date %></span>
+  </p>
+  <table class="table table-striped text-center">
+    <thead>
+      <tr class="thead-dark">
+        <th scope="col">S.No</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Brand</th>
+        <th scope="col">UOM</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% serial_number = 1 %>
+      <% @purchase.purchase_items.each do |item| %>
+        <tr>
+          <th scope="row"><%= serial_number %></th>
+          <td><%= item.product.name %></td>
+          <td><%= item.product.category.name %></td>
+          <td><%= item.product.brand.name %></td>
+          <td><%= item.product.uom.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= item.rate %></td>
+          <td><%= item.amount %></td>
+        </tr>
+        <% serial_number += 1 %>
+      <% end %>
+      <tr>
+        <th colspan="4" class="text-right">Order Value: </th>
+        <td colspan="4" class="text-left"> <%= @purchase.order_value %> </td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="text-center">
+    <%= link_to ('<i class="fa fa-edit fa-2x mr-5"></i>').html_safe, edit_purchase_path(@purchase) %>
+    <%= delete_link(purchase_path(@purchase)) %>
+  </p>
+</div>

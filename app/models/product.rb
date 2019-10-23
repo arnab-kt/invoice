@@ -5,4 +5,6 @@ class Product < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :active, inclusion: { in: [ true, false ] }
+
+  scope :active_products, ->{ where(active: true) }
 end

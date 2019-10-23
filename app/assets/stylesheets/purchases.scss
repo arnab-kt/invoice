@@ -1,3 +1,21 @@
-// Place all the styles related to the purchases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.purchase-form-container{
+  width: 580px;
+}
+
+.purchases-container{
+  width: 800px;
+  margin: auto;
+}
+
+.add-purchase-button{
+  color: red;
+}
+
+.purchase-details{
+  width: 1000px;
+  margin: auto;
+}
+
+.remove_fields{
+  margin-left: 5px;
+}

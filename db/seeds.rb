@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Category.create([{ name: 'Smart Phones', active: true }, { name: 'Laptops', active: true }])
+Brand.create([{ name: 'MI', active: true }, { name: 'Dell', active: true }])
+Uom.create([{ name: 'Piece', abbreviation: 'Pc', active: true }, { name: 'Kilograms', abbreviation: 'Kg',active: true }])
