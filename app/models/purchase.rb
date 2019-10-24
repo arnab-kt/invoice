@@ -1,7 +1,7 @@
 class Purchase < ApplicationRecord
 
   has_many :purchase_items, dependent: :destroy
-  accepts_nested_attributes_for :purchase_items, allow_destroy: true
+  accepts_nested_attributes_for :purchase_items, reject_if: :all_blank, allow_destroy: true
 
   scope :order_by_purchase_date, -> { order(date: :desc, id: :desc) }
 

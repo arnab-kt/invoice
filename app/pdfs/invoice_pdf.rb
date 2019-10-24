@@ -4,18 +4,25 @@ class InvoicePdf < Prawn::Document
   def initialize(invoice)
     super(top_margin: 70)
     @invoice = invoice
-    #@width = 540
     write_lines
   end
 
   def write_lines
     text "Invoice", align: :center, style: :bold, size: 28
+    company_logo
     move_down 30
     header
     move_down 10
     body
-    move_down 10
-    footer
+    bounding_box [bounds.left, bounds.bottom + 18], width: bounds.width do
+      footer
+    end
+  end
+
+  def company_logo
+    bounding_box([0, cursor], width: 100) do
+      image "#{Rails.root}/app/assets/images/logo.jpg", height: 100, width: 100 , at: [0,30]
+    end
   end
 
   def header
@@ -57,7 +64,7 @@ class InvoicePdf < Prawn::Document
       row(0).font_style = :bold
     end
 
-    table( data, column_widths: [37.5, 117.5, 102.5, 77.5, 42.5, 37.5, 57.5, 67.5], cell_style: {borders: [:bottom]})
+    table( data, column_widths: [37.5, 117.5, 102.5, 77.5, 42.5, 37.5, 57.5, 67.5], cell_style: {borders: [:top]})
   end
 
   def footer
