@@ -29,6 +29,8 @@ group :test do
   gem "webdrivers"
 end
 
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'prawn'
+gem 'prawn-table'
 gem "rubocop", "~> 0.75.1"
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

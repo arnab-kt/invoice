@@ -7,6 +7,15 @@ class PurchasesController < ApplicationController
   end
 
   def show
+    @jobs = Job.where(invoice: @purchase)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@jobs)
+        send_data pdf.render, filename: "Invoice #{@invoice.id}", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   def new
