@@ -17,7 +17,7 @@
 
         <% @purchases.each do |purchase| %>
           <tr>
-            <th scope="row"><%= purchase.id %></th>
+            <th scope="row"><%= 1000000000+purchase.id %></th>
             <td><%= purchase.date %></td>
             <td><%= purchase.order_value %></td>
             <td><%= link_to ('<i class="fa fa-eye fa-2x"></i>').html_safe, purchase_path(purchase) %></td>

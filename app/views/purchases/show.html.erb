@@ -1,7 +1,7 @@
 <h1 class="text-center mb-5">Show Purchase</h1>
 <div class = "purchase-details" >
   <p class="text-center">
-    <span>Purchase ID: <%= @purchase.id %></span><br>
+    <span>Purchase ID: <%= 1000000000 + @purchase.id %></span><br>
     <span>Date: <%= @purchase.date %></span>
   </p>
   <table class="table table-striped text-center">
@@ -25,7 +25,7 @@
           <td><%= item.product.name %></td>
           <td><%= item.product.category.name %></td>
           <td><%= item.product.brand.name %></td>
-          <td><%= item.product.uom.name %></td>
+          <td><%= item.product.uom.abbreviation %></td>
           <td><%= item.quantity %></td>
           <td><%= item.rate %></td>
           <td><%= item.amount %></td>
@@ -39,7 +39,8 @@
     </tbody>
   </table>
   <p class="text-center">
-    <%= link_to ('<i class="fa fa-edit fa-2x mr-5"></i>').html_safe, edit_purchase_path(@purchase) %>
+    <%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_purchase_path(@purchase), class: "mr-5" %>
     <%= delete_link(purchase_path(@purchase)) %>
+    <%= link_to ('<i class="fa fa-download fa-2x"></i>').html_safe, purchase_path(@purchase, format: :pdf), class: "ml-5" %>
   </p>
 </div>

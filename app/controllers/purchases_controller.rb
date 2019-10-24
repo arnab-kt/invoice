@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
       format.html
       format.pdf do
         pdf = InvoicePdf.new(@purchase)
-        send_data pdf.render, filename: "Invoice #{@invoice.id}", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Invoice #{1000000000+@purchase.id}", type: "application/pdf", disposition: "inline"
       end
     end
   end
