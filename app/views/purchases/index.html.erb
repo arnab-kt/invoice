@@ -1,32 +1,27 @@
-<h1 class="text-center mb-5">Purchases</h1>
-<div class="purchases-container">
-  <%= link_to ('<i class="fa fa-plus-square fa-3x pull-right add-purchase-button"></i> ').html_safe, new_purchase_path %>
-  <div class="table-responsive text-center purchases-table ml-auto mr-auto">
-    <table class="table table-striped">
-      <thead>
-        <tr class="thead-dark">
-          <th scope="col">Purchase ID</th>
-          <th scope="col">Date</th>
-          <th scope="col">Order Value</th>
-          <th scope="col">Show</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <% @purchases.each do |purchase| %>
-          <tr>
-            <th scope="row"><%= 1000000000+purchase.id %></th>
-            <td><%= purchase.date %></td>
-            <td><%= purchase.order_value %></td>
-            <td><%= link_to ('<i class="fa fa-eye fa-2x"></i>').html_safe, purchase_path(purchase) %></td>
-            <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_purchase_path(purchase) %></td>
-            <td><%= delete_link(purchase_path(purchase)) %></td>
-          </tr>
-
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<h1 class="text-center mb-5">Purchases
+  <%= link_to ('<i class="fa fa-plus-square pull-right add-purchase-button"></i> ').html_safe, new_purchase_path %>
+</h1>
+<table class="table table-striped text-center purchases-table ml-auto mr-auto">
+  <thead>
+    <tr class="thead-dark">
+      <th scope="col">Purchase ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Order Value</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <th scope="row"><%= 1000000000+purchase.id %></th>
+        <td><%= purchase.date %></td>
+        <td><%= purchase.order_value %></td>
+        <td><%= link_to ('<i class="fa fa-eye fa-2x"></i>').html_safe, purchase_path(purchase) %></td>
+        <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_purchase_path(purchase) %></td>
+        <td><%= delete_link(purchase_path(purchase)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
