@@ -1,24 +1,23 @@
-<div class = "simple-form-container mr-auto ml-auto">
-  <%= form_for @category, class: "form-group" do |f| %>
+<%= form_for @category, class: "form-group" do |f| %>
 
-    <% if @category.errors.any? %>
-      <% count = 1%>
-      <% @category.errors.full_messages.each do |msg| %>
-        <p class="text-danger"><%= count%>. <%= msg %></p>
-        <% count +=1 %>
-      <% end %>
-    <%end%>
-
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Enter Category Name", required: true, class: "form-control" %>
-    </p>
-    <p>
-      <%= f.label :Active %>
-      <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
-    </p>
-    <p>
-      <%=f.submit({ class: "btn btn-success btn-sm"})%>
-    </p>
+  <% if @category.errors.any? %>
+    <% count = 1%>
+    <% @category.errors.full_messages.each do |msg| %>
+      <p class="text-danger"><%= count%>. <%= msg %></p>
+      <% count += 1 %>
+    <% end %>
   <% end %>
-</div>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter Category Name", required: true, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :active, "Active" %>
+    <%= f.select :active, ["true", "false"], { required: true }, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-success btn-sm", disabled_with: "Saving" %>
+  </p>
+
+<% end %>

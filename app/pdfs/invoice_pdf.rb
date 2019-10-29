@@ -30,7 +30,7 @@ class InvoicePdf < Prawn::Document
     serial_number = 1
     items_per_page_counter = 1
     page_total = 0
-    purchase_items = @invoice.purchase_items
+    purchase_items = @invoice.purchase_items.includes({ product: [:uom, :brand, :category] })
     purchase_items.each_with_index do |item, index|
       data <<
         [
@@ -124,7 +124,7 @@ class InvoicePdf < Prawn::Document
   def invoice_id_and_date
     data = [
       [{content: "INVOICE", colspan: 2}],
-      ["Invoice Number:", "##{1000000000+@invoice.id}"],
+      ["Invoice Number:", "##{1000+@invoice.id}"],
       ["Date:", @invoice.date]
     ]
 

@@ -1,7 +1,8 @@
-<h1 class="text-center mb-5">Purchases
-  <%= link_to ('<i class="fa fa-plus-square pull-right add-purchase-button"></i> ').html_safe, new_purchase_path %>
-</h1>
-<table class="table table-striped text-center purchases-table ml-auto mr-auto">
+<div class="mb-4 mt-2 clearfix">
+  <h1 class="d-inline-block mb-0">Purchases</h1>
+  <%= link_to '<i class="fa fa-plus"></i> Add new purchase'.html_safe, new_purchase_path, class: "pull-right" %>
+</div>
+<table class="table table-striped text-center ml-auto mr-auto">
   <thead>
     <tr class="thead-dark">
       <th scope="col">Purchase ID</th>
@@ -15,11 +16,11 @@
   <tbody>
     <% @purchases.each do |purchase| %>
       <tr>
-        <th scope="row"><%= 1000000000+purchase.id %></th>
-        <td><%= purchase.date %></td>
-        <td><%= purchase.order_value %></td>
-        <td><%= link_to ('<i class="fa fa-eye fa-2x"></i>').html_safe, purchase_path(purchase) %></td>
-        <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_purchase_path(purchase) %></td>
+        <th scope="row"><%= 1000+purchase.id %></th>
+        <td><%= purchase.date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_with_precision(purchase.order_value, precision: 2) %></td>
+        <td><%= link_to ('<i class="fa fa-eye"></i>').html_safe, purchase_path(purchase) %></td>
+        <td><%= link_to ('<i class="fa fa-edit"></i>').html_safe, edit_purchase_path(purchase) %></td>
         <td><%= delete_link(purchase_path(purchase)) %></td>
       </tr>
     <% end %>

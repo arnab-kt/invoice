@@ -1,24 +1,23 @@
-<div class = "simple-form-container mr-auto ml-auto">
-  <%= form_for @brand, class: "form-group" do |f| %>
+<%= form_for @brand, html: {class: "form-horizontal-center"} do |f| %>
 
-    <% if @brand.errors.any? %>
-      <% count = 1%>
-      <% @brand.errors.full_messages.each do |msg| %>
-        <p class="text-danger"><%= count%>. <%= msg %></p>
-        <% count +=1 %>
-      <% end %>
-    <%end%>
+  <% if @brand.errors.any? %>
+    <% count = 1%>
+    <% @brand.errors.full_messages.each do |msg| %>
+      <p class="text-danger"><%= count%>. <%= msg %></p>
+      <% count +=1 %>
+    <% end %>
+  <%end%>
 
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Enter Brand Name", required: true, class: "form-control" %>
-    </p>
-    <p>
-      <%= f.label :Active %>
-      <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
-    </p>
-    <p>
-      <%=f.submit({ class: "btn btn-success btn-sm"})%>
-    </p>
-  <% end %>
-</div>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter Brand Name", required: true, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :active, "Active" %>
+    <%= f.select :active, ["true", "false"], { required: true },  class: "form-control" %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-success btn-sm", disabled_with: "Saving" %>
+  </p>
+
+<% end %>

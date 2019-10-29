@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def delete_link(path)
-    link_to ('<i class="fa fa-trash fa-2x" title="Delete Details"></i>').html_safe,
+    link_to ('<i class="fa fa-trash " title="Delete Details"></i>').html_safe,
               path,
               method: :delete,
               data: { confirm: "Are you sure?" }

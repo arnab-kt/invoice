@@ -1,7 +1,8 @@
-<h1 class="text-center mb-5">Products
-  <%= link_to ('<i class="fa fa-plus-square pull-right add-product-button"></i> ').html_safe, new_product_path %>
-</h1>
-<table class="table table-striped text-center products-table ml-auto mr-auto">
+<div class="mb-4 mt-2 clearfix">
+  <h1 class="d-inline-block mb-0">Products</h1>
+  <%= link_to '<i class="fa fa-plus"></i> Add new product'.html_safe, new_product_path, class: "pull-right" %>
+</div>
+<table class="table table-striped text-center ml-auto mr-auto">
   <thead>
     <tr class="thead-dark">
       <th scope="col">S.No</th>
@@ -23,7 +24,7 @@
         <td><%= product.category.name %></td>
         <td><%= product.brand.name %></td>
         <td><%= product.uom.name %></td>
-        <td><%= link_to ('<i class="fa fa-edit fa-2x"></i>').html_safe, edit_product_path(product) %></td>
+        <td><%= link_to ('<i class="fa fa-edit "></i>').html_safe, edit_product_path(product) %></td>
       </tr>
       <% serial_number += 1%>
     <% end %>

@@ -1,31 +1,27 @@
-<div class = "simple-form-container mr-auto ml-auto">
-  <%= form_for @uom, class: "form-group" do |f| %>
+<%= form_for @uom, class: "form-group" do |f| %>
 
-    <% if @uom.errors.any? %>
-      <% count = 1%>
-      <% @uom.errors.full_messages.each do |msg| %>
-        <p class="text-danger"><%= count%>. <%= msg %></p>
-        <% count +=1 %>
-      <% end %>
-    <%end%>
+  <% if @uom.errors.any? %>
+    <% count = 1%>
+    <% @uom.errors.full_messages.each do |msg| %>
+      <p class="text-danger"><%= count%>. <%= msg %></p>
+      <% count +=1 %>
+    <% end %>
+  <%end%>
 
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Enter Unit Of Measurement Name", required: true, class: "form-control" %>
-    </p>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter Unit Of Measurement Name", required: true, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :abbreviation %>
+    <%= f.text_field :abbreviation, placeholder: "Enter Short-Form", required: true, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :active, "Active" %>
+    <%= f.select :active, ["true", "false"], { required: true },  class: "form-control" %>
+  </p>
+  <p>
+    <%=f.submit class: "btn btn-success btn-sm", disabled_with: "Saving" %>
+  </p>
 
-    <p>
-      <%= f.label :abbreviation %>
-      <%= f.text_field :abbreviation, placeholder: "Enter Short-Form", required: true, class: "form-control" %>
-    </p>
-
-    <p>
-      <%= f.label :Active %>
-      <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
-    </p>
-
-    <p>
-      <%=f.submit({ class: "btn btn-success btn-sm"})%>
-    </p>
-  <% end %>
-</div>
+<% end %>

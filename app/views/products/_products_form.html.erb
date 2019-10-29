@@ -1,41 +1,35 @@
-<div class = "simple-form-container mr-auto ml-auto">
-  <%= form_for @product, class: "form-group" do |f| %>
+<%= form_for @product, class: "form-group" do |f| %>
 
-    <% if @product.errors.any? %>
-      <% count = 1%>
-      <% @product.errors.full_messages.each do |msg| %>
-        <span class="text-danger"><%= count%>. <%= msg %></span><br>
-        <% count +=1 %>
-      <% end %>
-    <%end%>
+  <% if @product.errors.any? %>
+    <% count = 1%>
+    <% @product.errors.full_messages.each do |msg| %>
+      <span class="text-danger"><%= count%>. <%= msg %></span><br>
+      <% count += 1 %>
+    <% end %>
+  <%end%>
 
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Enter Product Name", required: true, class: "form-control" %>
-    </p>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Enter Product Name", required: true, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :active, "Active" %>
+     <%= f.select :active, ["true", "false"], { required: true }, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :category_id, "Select Category" %>
+    <%= f.collection_select :category_id, Category.active_categories, :id, :name, { required: true }, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :brand_id, "Select Brand" %>
+    <%= f.collection_select :brand_id, Brand.active_brands, :id, :name, { required: true }, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.label :uom_id, "Select Unit Of Measurement" %>
+    <%= f.collection_select :uom_id, Uom.active_uoms, :id, :name, { required: true }, class: "form-control" %>
+  </p>
+  <p>
+    <%= f.submit class: "btn btn-success btn-sm", disabled_with: "Saving" %>
+  </p>
 
-    <p>
-      <%= f.label :Active %>
-      <%= f.select :active, ["true", "false"], {required: true}, {class: "form-control"}%>
-    </p>
-
-    <p>
-      <%= f.label :select_category %>
-      <%= f.collection_select(:category_id, Category.active_categories, :id, :name, { required: true},{ class: "form-control" }) %>
-    </p>
-
-    <p>
-      <%= f.label :select_brand %>
-      <%= f.collection_select(:brand_id, Brand.active_brands, :id, :name, { required: true},{ class: "form-control" }) %>
-    </p>
-
-    <p>
-      <%= f.label :select_unit_of_measurement %>
-      <%= f.collection_select(:uom_id, Uom.active_uoms, :id, :name, { required: true},{ class: "form-control" }) %>
-    </p>
-
-    <p>
-      <%= f.submit({ class: "btn btn-success btn-sm" }) %>
-    </p>
-  <% end %>
-</div>
+<% end %>
