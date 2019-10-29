@@ -109,16 +109,14 @@ class InvoicePdf < Prawn::Document
   end
 
   def header
-    repeat :all do
-      bounding_box [bounds.left, bounds.top], width: bounds.width do
-        logo_path = "#{Rails.root}/app/assets/images/main_logo.png"
-        table([
-          [ {image: logo_path, image_height: 103, image_width: 100}, company_name, invoice_id_and_date]
-        ],cell_style: {border_width: 0, padding: 0}, column_widths: [100, 180, 260]) do
-          style(column(2), align: :right)
-          column(2).font_style = :bold
-          column(2).size = 30
-        end
+    bounding_box [bounds.left, bounds.top], width: bounds.width do
+      logo_path = "#{Rails.root}/app/assets/images/main_logo.png"
+      table([
+        [ {image: logo_path, image_height: 103, image_width: 100}, company_name, invoice_id_and_date]
+      ],cell_style: {border_width: 0, padding: 0}, column_widths: [100, 180, 260]) do
+        style(column(2), align: :right)
+        column(2).font_style = :bold
+        column(2).size = 30
       end
     end
   end
