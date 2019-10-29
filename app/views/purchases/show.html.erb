@@ -1,4 +1,9 @@
-<h1 class="text-center mb-5">Show Purchase</h1>
+<div class="mb-4 mt-2 clearfix text-center">
+  <h1 class="d-inline-block mb-0">Show Purchase</h1>
+  <%= link_to ('<i class="fa fa-edit "></i>').html_safe, edit_purchase_path(@purchase), class: "mr-5 pull-right" %>
+  <%= delete_link(purchase_path(@purchase)) %>
+  <%= link_to ('<i class="fa fa-download "></i>').html_safe, purchase_path(@purchase, format: :pdf), class: "ml-5 pull-right" %>
+</div>
 <div class = "purchase-details" >
   <p class="text-center">
     <span>Purchase ID: <%= 1000 + @purchase.id %></span><br>
@@ -38,9 +43,4 @@
       </tr>
     </tbody>
   </table>
-  <p class="text-center">
-    <%= link_to ('<i class="fa fa-edit "></i>').html_safe, edit_purchase_path(@purchase), class: "mr-5" %>
-    <%= delete_link(purchase_path(@purchase)) %>
-    <%= link_to ('<i class="fa fa-download "></i>').html_safe, purchase_path(@purchase, format: :pdf), class: "ml-5" %>
-  </p>
 </div>
