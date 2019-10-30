@@ -14,7 +14,7 @@ module ApplicationHelper
               path,
               method: :delete,
               data: { confirm: "Are you sure?" },
-              class: "#{class_name}"
+              class: class_name
   end
 
 end
