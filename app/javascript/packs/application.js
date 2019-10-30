@@ -20,5 +20,13 @@ require("custom/purchases")
 $(()=>$(".fade").fadeOut(3000));
 
 $(function () {
-  $('.datepicker').datepicker();
+  $('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    endDate: '+0d',
+    autoclose: true,
+    todayHighlight: true
+  }).end().on('keydown paste', function (e) {
+    e.preventDefault();
+    return false;
+  });
 });

@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = InvoicePdf.new(@purchase)
+        pdf = InvoicePdf.new(@purchase, @purchase_items)
         send_data pdf.render, filename: "Invoice #{1000 + @purchase.id}", type: "application/pdf", disposition: "inline"
       end
     end

@@ -1,0 +1,25 @@
+<%= form_for @sale do |f| %>
+
+  <% if @sale.errors.any? %>
+    <% count = 1%>
+    <% @sale.errors.full_messages.each do |msg| %>
+      <p class="text-danger"><%= count%>. <%= msg %></p>
+      <% count += 1 %>
+    <% end %>
+  <%end%>
+
+  <div class="form-group form-inline">
+    <%= f.label :date, "Date", class: "control-label col-sm-1"%>
+    <%= f.text_field :date, required: true, class: "form-control datepicker" %>
+  </div>
+
+  <%= f.fields_for :sale_items do |builder| %>
+    <%= render "sale_item_fields", f: builder %>
+  <% end %>
+
+  <div>
+    <%= link_to_add_fields '<i class="fa fa-plus "></i> Add item'.html_safe, f, :sale_items %><br>
+    <%= f.submit class: "btn btn-success mt-3 pull-left", disabled_with: "Saving..." %>
+  </div>
+
+<% end %>

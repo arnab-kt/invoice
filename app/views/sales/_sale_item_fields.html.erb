@@ -1,0 +1,7 @@
+<fieldset class="form-group form-inline border p-2">
+  <%= f.collection_select :product_id, Product.active_products, :id, :name, { required: true, prompt: "-- Select Product --" }, class: "form-control mb-2 mr-sm-3" %>
+  <%= f.number_field :quantity, placeholder: "Enter Quantity", required: true, class: "form-control mb-2 mr-sm-3" %>
+  <%= f.number_field :rate, step: :any, placeholder: "Enter Rate", required: true, class: "form-control mb-2 mr-sm-3" %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to ('<i class="fa fa-trash"></i>').html_safe, "#", class: "remove_fields" %>
+</fieldset>

@@ -1,21 +1,21 @@
 <div class="mb-4 mt-2 clearfix text-center">
-  <h1 class="d-inline-block mb-0">Show Purchase</h1>
-  <%= link_to ('<i class="fa fa-edit "></i>').html_safe, edit_purchase_path(@purchase), class: "pull-right" %>
-  <%= delete_link(purchase_path(@purchase), "pull-right mr-3 ml-3") %>
-  <%= link_to ('<i class="fa fa-download "></i>').html_safe, purchase_path(@purchase, format: :pdf), class: "pull-right" %>
+  <h1 class="d-inline-block mb-0">Show Sale</h1>
+  <%= link_to ('<i class="fa fa-edit "></i>').html_safe, edit_sale_path(@sale), class: "pull-right" %>
+  <%= delete_link(sale_path(@sale), "pull-right mr-3 ml-3") %>
+  <%= link_to ('<i class="fa fa-download "></i>').html_safe, sale_path(@sale, format: :pdf), class: "pull-right" %>
 </div>
-<div class = "purchase-details" >
+<div class = "sale-details" >
   <div class="row mt-2 mb-2">
     <div class="col-6">
-      <span>Date: <%= @purchase.date.strftime("%d/%m/%Y")  %></span>
+      <span>Date: <%= @sale.date.strftime("%d/%m/%Y")  %></span>
     </div>
     <div class="col-4">
-      <span class="pull-right">Purchase ID: </span><br>
+      <span class="pull-right">Sale ID: </span><br>
       <span class="pull-right">Order Value: </span>
     </div>
     <div class="col-2">
-      <span class="pull-left"><%= 1000 + @purchase.id %></span><br>
-      <span class="pull-left"><%= @purchase.order_value %></span>
+      <span class="pull-left"><%= 1000 + @sale.id %></span><br>
+      <span class="pull-left"><%= @sale.order_value %></span>
     </div>
   </div>
   <table class="table table-striped text-center">
@@ -33,7 +33,7 @@
     </thead>
     <tbody>
       <% serial_number = 1 %>
-      <% @purchase_items.each do |item| %>
+      <% @sale_items.each do |item| %>
         <tr>
           <th scope="row"><%= serial_number %></th>
           <td><%= item.product.name %></td>

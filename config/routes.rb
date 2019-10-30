@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :uoms, except: [:show, :destroy]
   resources :products, except: [:show, :destroy]
   resources :purchases
-
+  resources :sales
   root "home#index"
 end

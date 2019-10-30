@@ -1,9 +1,10 @@
 require 'prawn'
 class InvoicePdf < Prawn::Document
 
-  def initialize(invoice)
+  def initialize(invoice, invoice_items)
     super(top_margin: 30)
     @invoice = invoice
+    @invoice_items =  invoice_items
     write_lines
   end
 
@@ -30,8 +31,7 @@ class InvoicePdf < Prawn::Document
     serial_number = 1
     items_per_page_counter = 1
     page_total = 0
-    purchase_items = @invoice.purchase_items.includes({ product: [:uom, :brand, :category] })
-    purchase_items.each_with_index do |item, index|
+    @invoice_items.each_with_index do |item, index|
       data <<
         [
           serial_number,
@@ -59,7 +59,7 @@ class InvoicePdf < Prawn::Document
         items_table_footer(page_total)
         items_per_page_counter = 1
         page_total = 0
-        if purchase_items[index+1].present?
+        if @invoice_items[index+1].present?
           start_new_page
           header
           move_down 50
@@ -73,7 +73,7 @@ class InvoicePdf < Prawn::Document
   end
 
   def items_table_footer(page_total)
-    table([["Total", page_total]], column_widths: [472.5, 67.5]) do
+    table([["Total", page_total]], column_widths: [469.5, 70.5]) do
       column(0..1).each do |c|
         c.align = :right
       end
@@ -83,7 +83,7 @@ class InvoicePdf < Prawn::Document
 
   def items_table_header
     headers = [["S.No", "Product", "Category", "Brand", "UOM", "Qty", "Rate", "Amount"]]
-    table( headers, column_widths: [37.5, 117.5, 102.5, 77.5, 42.5, 37.5, 57.5, 67.5]) do
+    table( headers, column_widths: [37.5, 117.5, 102.5, 77.5, 37.5, 29.5, 67.5, 70.5]) do
       row(0).font_style = :bold
       column(0).align = :right
       column(5..7).each do |c|
@@ -94,7 +94,7 @@ class InvoicePdf < Prawn::Document
 
 
   def items_table_body(data)
-    table( data, column_widths: [37.5, 117.5, 102.5, 77.5, 42.5, 37.5, 57.5, 67.5], cell_style: { padding_top: 16, padding_bottom: 16}) do
+    table( data, column_widths: [37.5, 117.5, 102.5, 77.5, 37.5, 29.5, 67.5, 70.5], cell_style: { padding_top: 16, padding_bottom: 16}) do
       column(0).borders = [:left]
       column(0).align = :right
       column(1..6).each do |c|

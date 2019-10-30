@@ -1,0 +1,28 @@
+<div class="mb-4 mt-2 clearfix">
+  <h1 class="d-inline-block mb-0">Sales</h1>
+  <%= link_to '<i class="fa fa-plus"></i> Add new sale'.html_safe, new_sale_path, class: "pull-right" %>
+</div>
+<table class="table table-striped text-center ml-auto mr-auto">
+  <thead>
+    <tr class="thead-dark">
+      <th scope="col">Sale ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Order Value</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <th scope="row"><%= 1000+sale.id %></th>
+        <td><%= sale.date.strftime("%d/%m/%Y") %></td>
+        <td><%= number_with_precision(sale.order_value, precision: 2) %></td>
+        <td><%= link_to ('<i class="fa fa-eye"></i>').html_safe, sale_path(sale) %></td>
+        <td><%= link_to ('<i class="fa fa-edit"></i>').html_safe, edit_sale_path(sale) %></td>
+        <td><%= delete_link(sale_path(sale)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
