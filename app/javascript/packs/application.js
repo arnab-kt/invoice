@@ -25,8 +25,5 @@ $(function () {
     endDate: '+0d',
     autoclose: true,
     todayHighlight: true
-  }).end().on('keydown paste', function (e) {
-    e.preventDefault();
-    return false;
   });
 });

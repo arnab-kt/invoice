@@ -10,7 +10,7 @@
 
   <div class="form-group form-inline">
     <%= f.label :date, "Date", class: "control-label col-sm-1"%>
-    <%= f.text_field :date, required: true, class: "form-control datepicker" %>
+    <%= f.text_field :date, onkeydown: "event.preventDefault()", required: true, class: "form-control datepicker" %>
   </div>
 
   <%= f.fields_for :sale_items do |builder| %>
